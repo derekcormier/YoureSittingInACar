@@ -1,0 +1,47 @@
+<!DOCYPE html>
+<html>
+
+<head>
+<style>
+	input{
+		float:left;
+	}
+	div{
+		overflow:hidden;
+		float:left;
+		width:200px;
+		height:200px;
+	
+		background-image: linear-gradient(top, black, white);
+	}
+</style>
+
+<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+<script type="text/javascript">
+	var revs = 0;
+	function revEngine(){
+		if (revs < 1){
+			$('div').prepend('<p>The engine roars to life</p>');
+			$('#rev').val('Rev engine');
+		}
+		if (revs >= 1){
+			$('div').prepend('<p>The engine roars loadly</p>');
+		}
+		
+		revs = revs + 1;
+	}
+</script>
+
+</head>
+
+
+
+<body>
+	<div>
+		<p>
+			You are in a car.
+		</p>
+	</div>
+	<input id="rev" type="button" onclick="revEngine()" value="Start Engine"/>
+</body>
+</html>
