@@ -3,16 +3,17 @@
 
 <head>
 <style>
-	input{
+	#Inputs #Resources{
 		float:left;
+	}
+	p{
+		display: inline;
 	}
 	#Content{
 		overflow:hidden;
 		float:left;
 		width:200px;
 		height:200px;
-	
-		background-image: linear-gradient(top, black, white);
 	}
 </style>
 
@@ -47,9 +48,18 @@
 		<input id="shiftGears" type= "button" onclick="shiftGears()" value="Shift Gears"/>
 	</div>
 	<div id="Resources">
-		<p>Revs:</p>
-		<p>Gear:</p>
-		<p>Gas:</p>
+		<div>
+			<p>Revs:</p>
+			<p id="revValue">0</p>
+		</div>
+		<div>
+			<p>Gear:</p>
+			<p id="gearValue">0</p>
+		</div>
+		<div>
+			<p>Gas:</p>
+			<p id="gasValue">0</p>
+		</div>
 	</div>
 </body>
 </html>
