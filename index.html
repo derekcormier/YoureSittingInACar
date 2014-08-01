@@ -14,6 +14,10 @@
 	p{
 		display: inline;
 	}
+	div#wrapper{
+		display: inline-flex;
+		margin-left:25%;
+	}
 	div#Content{
 		overflow: hidden;
 		position:relative;
@@ -35,14 +39,29 @@
 <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
 <script type="text/javascript">
 	var revs = 0;
+	var gear = 1;
 	function startEngine(){
 		$('#Content').prepend('<div>The engine roars to life</div>');
 		$('#startEngine').prop("disabled", true);
 		$('#rev').show();
+		revs = 1000;
+		$('#revValue').text(revs);
 	}
 	function revEngine(){
 		$('#Content').prepend('<div>The engine roars loudly</div>');
-		revs = revs + 1;
+		revs = revs + 1000;
+		$('#revValue').text(revs);
+		if (revs >= 6000){
+			$('#shiftGears').show();
+			$('#shiftGears').prop("disabled",false);
+		}
+	}
+	function shiftGears(){
+		revs = revs - 4000;
+		$('#revValue').text(revs);
+		gear = gear + 1;
+		$('#shiftGears').text(gear);
+		$('#shiftGears').prop("disabled", true);
 	}
 </script>
 
@@ -70,7 +89,7 @@
 			</div>
 			<div>
 				<p>Gear:</p>
-				<p id="gearValue">0</p>
+				<p id="gearValue">1</p>
 			</div>
 			<div>
 				<p>Gas:</p>
