@@ -40,6 +40,7 @@
 <script type="text/javascript">
 	var revs = 0;
 	var gear = 1;
+	
 	function startEngine(){
 		$('#Content').prepend('<div>The engine roars to life</div>');
 		$('#startEngine').prop("disabled", true);
@@ -47,6 +48,7 @@
 		revs = 1000;
 		$('#revValue').text(revs);
 	}
+	
 	function revEngine(){
 		$('#Content').prepend('<div>The engine roars loudly</div>');
 		revs = revs + 1000;
@@ -56,6 +58,7 @@
 			$('#shiftGears').prop("disabled",false);
 		}
 	}
+	
 	function shiftGears(){
 		revs = revs - 4000;
 		$('#revValue').text(revs);
