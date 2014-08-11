@@ -87,6 +87,10 @@
 			if (revs >= 7000){
 				$('#Content').prepend('<div class="text">The engine sounds like it is being pushed to the limit</div>');
 			}
+			setInterval(function(){
+				revs = revs - 1;
+				$('#revValue').text(revs);
+				},100);
 		}
 		else{
 			if (shutdown){
