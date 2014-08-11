@@ -48,6 +48,10 @@
 <script type="text/javascript">
 	var revs = 0;
 	var gear = 1;
+	var sponsors = 0;
+	var present = false;
+	shutdown = true;
+	var gas = 5;
 	
 	function startEngine(){
 		$('#Content').prepend('<div class="text">The engine roars to life</div>');
@@ -55,20 +59,42 @@
 		$('#rev').fadeIn();
 		revs = 1000;
 		$('#revValue').text(revs);
+		if (sponsors < 1){
+			$('#Content').prepend('<div class="text">You notice a man look over at your car</div>');
+		}
 	}
 	
 	function revEngine(){
-		if (revs < 7000){
-			$('#Content').prepend('<div class="text">The engine roars loudly</div>');
-			revs = revs + 700;
-			$('#revValue').text(revs);
-			if (revs >= 5000){
-				$('#Content').prepend('<div class="text">The engine begins to purr</div>')
-				$('#shiftGears').fadeIn().prop("disabled",false);
+		if (gas > 0){
+			if (revs < 7000){
+				$('#Content').prepend('<div class="text">The engine roars loudly</div>');
+				revs = revs + 700;
+				gas = gas - 1;
+				$('#revValue').text(revs);
+				if (sponsors < 1 && present === false){
+					$('#Content').prepend('<div class="text">The man looks over again and starts to walk over</div>');
+					present = true;
+				}
+				if (sponsors < 1 && present === true){
+					$('#Content').prepend('<div class="text">The man walks up and says he likes your style and offers to be a sponsor and pay for some of your gas</div>');
+				}
+				if (revs >= 5000){
+					$('#Content').prepend('<div class="text">The engine begins to purr</div>')
+					$('#shiftGears').fadeIn().prop("disabled",false);
+				}
+			}
+			if (revs >= 7000){
+				$('#Content').prepend('<div class="text">The engine sounds like it is being pushed to the limit</div>');
 			}
 		}
-		if (revs >= 7000){
-			$('#Content').prepend('<div class="text">The engine sounds like it is being pushed to the limit</div>');
+		else{
+			if (shutdown){
+				$('#Content').prepend('<div class="text">The car sputters and the engine cuts out</div>');
+				shutdown = false;
+			}
+			else{
+				$('#Content').prepend('<div class="text">You&#39;re out of gas and the car wont run</div>');
+			}
 		}
 	}
 	
@@ -79,6 +105,10 @@
 		gear = gear + 1;
 		$('#gearValue').text(gear);
 		$('#shiftGears').prop("disabled", true);
+	}
+	
+	function getGas(){
+		shutdown = true;
 	}
 	
 </script>
