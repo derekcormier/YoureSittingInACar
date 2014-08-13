@@ -54,7 +54,7 @@
 	var gas = 5;
 	
 	function startEngine(){
-		printText('<div class="text">The engine roars to life</div>');
+		printText('The engine roars to life');
 		$('#startEngine').prop("disabled", true);
 		$('#rev').fadeIn();
 		$('#revResource').fadeIn();
@@ -71,44 +71,44 @@
 	function revEngine(){
 		if (checkForGas()){
 			if (revs < 7000){
-				printText('<div class="text">The engine roars loudly</div>');
+				printText('The engine roars loudly');
 				revs = revs + 700;
 				gas = gas - 1;
 				$('#revValue').text(revs);
 				$('#gasValue').text(gas);
 				if (revs >= 5000){
-					printText('<div class="text">The engine begins to purr</div>');
+					printText('The engine begins to purr');
 					$('#shiftGears').fadeIn().prop("disabled",false);
 				}
 			}
 			if (revs >= 7000){
-				printText('<div class="text">The engine sounds like it is being pushed to the limit</div>');
+				printText('The engine sounds like it is being pushed to the limit');
 			}
 		}
 		else{
 			if (shutdown){
-				printText('<div class="text">The car sputters and the engine cuts out</div>');
+				printText('The car sputters and the engine cuts out');
 				shutdown = false;
 			}
 			else{
-				printText('<div class="text">You&#39;re out of gas and the car wont run</div>');
+				printText('You&#39;re out of gas and the car wont run');
 			}
 		}
 		
 		if (sponsors < 1){
 			if (interested){
 				if (present){
-					printText('<div class="text">The man walks up and says he likes your style and offers to be a sponsor and pay for some of your gas</div>');
+					printText('The man walks up and says he likes your style and offers to be a sponsor and pay for some of your gas');
 					sponsors = sponsors + 1;
 				}
 				else{
-					printText('<div class="text">The man looks over again and starts to walk over</div>');
+					printText('The man looks over again and starts to walk over');
 					present = true;
 				}
 
 			}
 			else{
-				printText('<div class="text">You notice a man look over at your car</div>');
+				printText('You notice a man look over at your car');
 				interested = true;
 			}
 		}
@@ -118,7 +118,7 @@
 	function checkForGas(){
 		if (gas === 3 && $('#gasResource').css('display')==='none'){
 			$('#gasValue').text(gas);
-			printText('<div class="text">You realize you are running a little low on gas</div>');
+			printText('You realize you are running a little low on gas');
 			$('#gasResource').fadeIn();
 			$('#getGas').fadeIn();
 		}
@@ -129,7 +129,7 @@
 	}
 	
 	function shiftGears(){
-		printText('<div class="text">The engine skips a note and then begins to build again</div>');
+		printText('The engine skips a note and then begins to build again');
 		revs = revs - 3000;
 		$('#revValue').text(revs);
 		gear = gear + 1;
@@ -139,13 +139,13 @@
 	
 	function getGas(){
 		shutdown = true;
-		printText('<div class="text">You walk over to the pit and scrounge up some gas</div>');
+		printText('You walk over to the pit and scrounge up some gas');
 		gas = gas + 5;
 		$('#gasValue').text(gas);
 	}
 	
 	function printText(message){
-		$(message).hide().prependTo('#Content').fadeIn('slow');
+		$('<div class="text">'+message+'/<div>').hide().prependTo('#Content').fadeIn('slow');
 	}
 </script>
 
