@@ -44,7 +44,6 @@
 </style>
 
 <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-<script src="jquery.timer.js"></script>
 <script type="text/javascript">
 	var revs = 0;
 	var gear = 1;
@@ -55,7 +54,7 @@
 	var gas = 5;
 	
 	function startEngine(){
-		$('#Content').prepend('<div class="text">The engine roars to life</div>');
+		$('<div class="text">The engine roars to life</div>').hide().prependTo('#Content').fadeIn('slow');
 		$('#startEngine').prop("disabled", true);
 		$('#rev').fadeIn();
 		$('#revResource').fadeIn();
@@ -72,44 +71,44 @@
 	function revEngine(){
 		if (checkForGas()){
 			if (revs < 7000){
-				$('#Content').prepend('<div class="text">The engine roars loudly</div>');
+				$('<div class="text">The engine roars loudly</div>').hide().prependTo('#Content').fadeIn('slow');
 				revs = revs + 700;
 				gas = gas - 1;
 				$('#revValue').text(revs);
 				$('#gasValue').text(gas);
 				if (revs >= 5000){
-					$('#Content').prepend('<div class="text">The engine begins to purr</div>')
+					$('<div class="text">The engine begins to purr</div>').hide().prependTo('#Content').fadeIn('slow');
 					$('#shiftGears').fadeIn().prop("disabled",false);
 				}
 			}
 			if (revs >= 7000){
-				$('#Content').prepend('<div class="text">The engine sounds like it is being pushed to the limit</div>');
+				$('<div class="text">The engine sounds like it is being pushed to the limit</div>').hide().prependTo('#Content').fadeIn('slow');
 			}
 		}
 		else{
 			if (shutdown){
-				$('#Content').prepend('<div class="text">The car sputters and the engine cuts out</div>');
+				$('<div class="text">The car sputters and the engine cuts out</div>').hide().prependTo('#Content').fadeIn('slow');
 				shutdown = false;
 			}
 			else{
-				$('#Content').prepend('<div class="text">You&#39;re out of gas and the car wont run</div>');
+				$('<div class="text">You&#39;re out of gas and the car wont run</div>').hide().prependTo('#Content').fadeIn('slow');
 			}
 		}
 		
 		if (sponsors < 1){
 			if (interested){
 				if (present){
-					$('#Content').prepend('<div class="text">The man walks up and says he likes your style and offers to be a sponsor and pay for some of your gas</div>');
+					$('<div class="text">The man walks up and says he likes your style and offers to be a sponsor and pay for some of your gas</div>').hide().prependTo('#Content').fadeIn('slow');
 					sponsors = sponsors + 1;
 				}
 				else{
-					$('#Content').prepend('<div class="text">The man looks over again and starts to walk over</div>');
+					$('<div class="text">The man looks over again and starts to walk over</div>').hide().prependTo('#Content').fadeIn('slow');
 					present = true;
 				}
 
 			}
 			else{
-				$('#Content').prepend('<div class="text">You notice a man look over at your car</div>');
+				$('<div class="text">You notice a man look over at your car</div>').hide().prependTo('#Content').fadeIn('slow');
 				interested = true;
 			}
 		}
@@ -119,6 +118,7 @@
 	function checkForGas(){
 		if (gas === 3 && $('#gasResource').css('display')==='none'){
 			$('#gasValue').text(gas);
+			$('<div class="text">You realize you are running a little low on gas</div>').hide().prependTo('#Content').fadeIn('slow');
 			$('#gasResource').fadeIn();
 			$('#getGas').fadeIn();
 		}
@@ -129,7 +129,7 @@
 	}
 	
 	function shiftGears(){
-		$('#Content').prepend('<div class="text">The engine skips a note and then begins to build again</div>');
+		$('<div class="text">The engine skips a note and then begins to build again</div>').hide().prependTo('#Content').fadeIn('slow');
 		revs = revs - 3000;
 		$('#revValue').text(revs);
 		gear = gear + 1;
@@ -139,7 +139,7 @@
 	
 	function getGas(){
 		shutdown = true;
-		$('#Content').prepend('<div class="text">You walk over to the pit and scrounge up some gas</div>');
+		$('<div class="text">You walk over to the pit and scrounge up some gas</div>').hide().prependTo('#Content').fadeIn('slow');
 		gas = gas + 5;
 		$('#gasValue').text(gas);
 	}
