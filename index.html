@@ -145,6 +145,43 @@
 	function printText(message){
 		$('<div class="text">'+message+'</div>').hide().prependTo('#Content').fadeIn('slow');
 	}
+	
+	var sequence = [38,38,40,40,37,39,37,39,66,65];
+	var initiated = false;
+	var count = 0;
+	
+	$(document).keydown(function(e) {
+		press = e.keyCode;
+		if(!initiated) {
+			if(press == 38) {
+				initiated = true;
+			}
+		}
+		
+		if(initiated) {
+			if(press == sequence[count]) {
+				count++;
+			} else {
+				nuke();
+			}
+			if(count == sequence.length) {
+				mysterious();
+				nuke();
+			}
+		} else {
+			nuke();
+		}
+	});
+	
+	function nuke() {
+		count = 0;
+		initiated = false;
+	}
+	
+	function mysterious() {
+		alert("GOD MODE ACTIVATED");
+		var lives = 100;
+	}
 </script>
 
 </head>
